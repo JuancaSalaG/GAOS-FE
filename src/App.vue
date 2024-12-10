@@ -1,18 +1,11 @@
 <template>
-
-  <div class="d-flex justify-content-center">
-    <div class="me-5">
-      <v-btn>
-        Button
-      </v-btn>
-    </div>
-    <div>
-      <button class="btn btn-primary">
-        Button
-      </button>
-    </div>
-  </div>
+  <Home />
 </template>
+
+<script setup lang="ts">
+import Home from './components/Home.vue';
+</script>
+
 
 <style lang="scss">
 #app {

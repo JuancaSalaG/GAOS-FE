@@ -1,16 +1,13 @@
 <template>
     <div>
-        Hello World
+        <slot name="header"></slot>
+        <slot name="main"></slot>
+        <slot name="footer"></slot>  
     </div>
 </template>
 
 <script setup>
-
 </script>
 
 <style scoped>
-main {
-  min-height: 80vh;
-  padding: 20px;
-}
 </style>
