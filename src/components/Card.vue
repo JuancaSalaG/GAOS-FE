@@ -14,7 +14,9 @@
         </v-card-title>
 
         <div class="d-flex flex-column justify-content-center align-items-center my-3">
-            <v-btn class="mb-5 w-auto">
+            <v-btn 
+                class="mb-5 w-auto"
+                @click="goToLogin">
                 Ingresar
             </v-btn>
     
@@ -30,7 +32,7 @@
 
 <script setup lang="ts">
 import router from "@/router";
-import { defineProps, toRefs } from "vue";
+import { defineProps, inject, Ref, toRefs } from "vue";
 
 const props = defineProps({
     cardTitle: {
@@ -43,9 +45,18 @@ const props = defineProps({
     }
 });
 
+const { cardTitle, image } = toRefs(props);
+
 const goToRegister = () => {
     router.push("/sign-up");
 }
 
-const { cardTitle, image } = toRefs(props);
+const sharedMessage = inject<Ref<string>>('sharedMessage');
+    
+const goToLogin = () => {
+    router.push("/login");
+    if (sharedMessage) {
+        sharedMessage.value = 'Bienvenido a GAOS';
+    }
+}
 </script>

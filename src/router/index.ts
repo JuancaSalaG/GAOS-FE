@@ -11,7 +11,8 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '',
         name: 'Home',
-        component: () => import('@/views/Home.vue')
+        component: () => import('@/views/Home.vue'),
+        meta: { home: true, login: false }
       },
       {
         path: '/about',
@@ -27,6 +28,17 @@ const routes: Array<RouteRecordRaw> = [
         path: '/sign-up',
         name: 'Register',
         component: () => import('@/views/Register.vue')
+      },
+      {
+        path: '/login',
+        name: 'Login',
+        component: () => import('@/views/Home.vue'),
+        meta: { login: true, home: false  }
+      },
+      {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/Dashboard.vue'),
       }
     ]
   },

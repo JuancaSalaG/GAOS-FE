@@ -1,6 +1,9 @@
 <template>
     <main>
-        <div class="container my-5" style="min-height: 79vh;">
+        <div class="alert alert-success" role="alert" v-show="flag">
+            Usuario creado correctamente!!
+        </div>
+        <div class="container my-5">
             <h1 class="fw-bold fs-4 mt-6">REGISTRO DE PACIENTES</h1>
             <form @submit.prevent="submit">
                 <div class="d-flex flex-column mx-auto w-50 text-start">
@@ -50,9 +53,21 @@
 <script setup lang="ts">
 import { User } from '@/shared/models/user.model';
 import { createUser } from '@/shared/services/users.service';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 
 const patient = reactive({
+    email: '',
+    password: '',
+    name: '',
+    surname: '',
+    phone: '',
+    dniType: 'CC',
+    dniNumber: ''
+});
+
+const flag = ref(false);
+
+const resetPatient = reactive({
     email: '',
     password: '',
     name: '',
@@ -84,14 +99,23 @@ const submit = () => {
         }
     };
     createUser(model)
-        .then(response => console.log('Usuario creado', response))
+        .then(response => {
+            console.log('Usuario creado', response);
+            flag.value = true;
+            new Promise((resolve) => {
+                setTimeout(() => {
+                resolve(flag.value = false);
+                }, 3000);
+            });
+        })
         .catch(error => console.error(error));
+    Object.assign(patient, resetPatient);
 }
 </script>
 
 <style scoped>
 main {
-  min-height: 84vh;
   background-color: #FBFBFB;
+  min-height: 95vh;
 }
 </style>

@@ -4,7 +4,9 @@
             <Header />
         </template>
         <template #main>
-            <SignUp />
+            <div>
+                Hello from Dashboard
+            </div>
         </template>
         <template #footer>
             <Footer />
@@ -16,8 +18,9 @@
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
-import SignUp from '@/components/auth/SignUp.vue';
+
+const user = JSON.parse(localStorage.getItem('user') || '{}');
+console.log('🔴 ', user);
 </script>
 
-<style scoped>
-</style>
+<style scoped lang="scss"></style>
