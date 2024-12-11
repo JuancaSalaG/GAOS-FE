@@ -20,7 +20,8 @@
     
             <v-btn v-if="cardTitle === 'Pacientes'"
                 class="mb-5 w-auto"
-                color="#3a6e90">
+                color="#3a6e90"
+                @click="goToRegister">
                 Registrarse
             </v-btn>
         </div>
@@ -28,6 +29,7 @@
 </template>
 
 <script setup lang="ts">
+import router from "@/router";
 import { defineProps, toRefs } from "vue";
 
 const props = defineProps({
@@ -40,6 +42,10 @@ const props = defineProps({
         required: true
     }
 });
+
+const goToRegister = () => {
+    router.push("/sign-up");
+}
 
 const { cardTitle, image } = toRefs(props);
 </script>
