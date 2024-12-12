@@ -24,6 +24,7 @@
 import router from '@/router';
 import { reactive } from 'vue';
 import { login } from "@/shared/services/users.service";
+import { userStore } from "@/store/index";
 
 const loginUser = reactive({
     email: '',
@@ -38,8 +39,9 @@ const resetLogin = reactive({
 const goToApp = () => {
     login(loginUser)
         .then((response) => {
+            console.log(response.data);            
+            userStore.setUser(response.data);
             router.push("/dashboard");
-            localStorage.setItem('user', JSON.stringify(response.data));
         })
         .catch((error) => {
             console.log(error);

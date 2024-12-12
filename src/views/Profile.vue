@@ -4,7 +4,7 @@
             <Header />
         </template>
         <template #main>
-            <Admin />
+            <UpdateUser />
         </template>
         <template #footer>
             <Footer />
@@ -16,13 +16,8 @@
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
-import Admin from '@/components/users/Admin.vue';
-import Profile from '@/components/users/Profile.vue';
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-console.log(route.meta);
-
+import UpdateUser from '@/components/users/UpdateUser.vue';
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped>
+</style>
